@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    FileProvider Paths Configuration
+
+    Defines paths that can be shared with other apps via FileProvider.
+    Used for:
+    - Exporting CSV files
+    - Sharing student ID cards
+    - Database backup files
+
+    @author Mary Tiluli
+    @version 1.0.0
+-->
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- External storage files directory -->
+    <external-files-path
+        name="external_files"
+        path="." />
+
+    <!-- Cache directory for temporary files -->
+    <cache-path
+        name="cache_files"
+        path="." />
+
+    <!-- Internal files directory -->
+    <files-path
+        name="internal_files"
+        path="." />
+</paths>

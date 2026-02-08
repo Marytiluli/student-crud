@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Auto Backup Configuration for Android 12+
+
+    Defines what data should be included in automatic backups:
+    - Room database files (student data)
+    - DataStore preferences (app settings)
+    - Excludes cache and temporary files
+
+    @author Mary Tiluli
+    @version 1.0.0
+-->
+<full-backup-content>
+    <!-- Include database files -->
+    <include domain="database" path="." />
+
+    <!-- Include DataStore preferences -->
+    <include domain="file" path="datastore/" />
+
+    <!-- Exclude cache directory -->
+    <exclude domain="file" path="cache/" />
+
+    <!-- Exclude temporary files -->
+    <exclude domain="file" path="tmp/" />
+</full-backup-content>

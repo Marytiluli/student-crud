@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Material Design 3 Theme Configuration
+
+    Base theme configuration that delegates to Material3 dynamic theming
+    in Compose. This XML theme is only used for system UI elements
+    before Compose initialization.
+
+    @author Mary Tiluli
+    @version 1.0.0
+-->
+<resources>
+    <style name="Theme.StudentCrudApp" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- Enable Material You dynamic colors on Android 12+ -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Supported Locales Configuration
+
+    Defines languages supported by the application for per-app language preferences.
+    Users can select their preferred language in Android 13+ system settings.
+
+    Supported Languages:
+    - English (en) - Default
+    - Swahili (sw) - Tanzanian language
+
+    @author Mary Tiluli
+    @version 1.0.0
+-->
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <locale android:name="en" />
+    <locale android:name="sw" />
+</locale-config>
