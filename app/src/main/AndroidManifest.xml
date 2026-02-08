@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Student CRUD Application - Android Manifest
+
+    Defines application-level components and configurations:
+    - App permissions (Camera, Storage, Audio, Network)
+    - Application theme and icon
+    - MainActivity as launcher activity
+    - Backup and data extraction rules
+    - Locale support configuration
+
+    @author Mary Tiluli
+    @version 1.0.0
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Permissions for app features -->
+    <!-- Camera permission for profile photo capture -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Storage permissions for photo access and backup/export -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <!-- Audio permission for voice input feature -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Network permission for offline detection -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Internet permission for future cloud sync -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Hardware features (optional - won't exclude devices without camera) -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.StudentCrudApp"
+        android:localeConfig="@xml/locales_config"
+        tools:targetApi="31">
+
+        <!-- Main Activity - Entry point of the application -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.StudentCrudApp"
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- FileProvider for sharing files (e.g., exported CSV, ID cards) -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>
