@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Material Design 3 Color Definitions
+
+    Base colors used for building the color scheme in Compose.
+    These colors are referenced by Color.kt for the dynamic theme system.
+
+    Color Palette:
+    - Primary: Blue shades for main brand color
+    - Secondary: Cyan/Teal for accents
+    - Error: Red for error states
+    - Success: Green for success feedback
+    - Neutral: Grays for backgrounds and surfaces
+
+    @author Mary Tiluli
+    @version 1.0.0
+-->
+<resources>
+    <!-- Primary Colors - Blue -->
+    <color name="primary_light">#1E88E5</color>
+    <color name="primary_dark">#1565C0</color>
+    <color name="on_primary">#FFFFFF</color>
+
+    <!-- Secondary Colors - Cyan -->
+    <color name="secondary_light">#00ACC1</color>
+    <color name="secondary_dark">#00838F</color>
+    <color name="on_secondary">#FFFFFF</color>
+
+    <!-- Tertiary Colors - Indigo -->
+    <color name="tertiary_light">#5E35B1</color>
+    <color name="tertiary_dark">#4527A0</color>
+    <color name="on_tertiary">#FFFFFF</color>
+
+    <!-- Error Colors - Red -->
+    <color name="error_light">#D32F2F</color>
+    <color name="error_dark">#C62828</color>
+    <color name="on_error">#FFFFFF</color>
+
+    <!-- Success Colors - Green -->
+    <color name="success_light">#388E3C</color>
+    <color name="success_dark">#2E7D32</color>
+    <color name="on_success">#FFFFFF</color>
+
+    <!-- Warning Colors - Orange -->
+    <color name="warning_light">#F57C00</color>
+    <color name="warning_dark">#E65100</color>
+    <color name="on_warning">#FFFFFF</color>
+
+    <!-- Background Colors -->
+    <color name="background_light">#FFFFFF</color>
+    <color name="background_dark">#121212</color>
+    <color name="on_background_light">#000000</color>
+    <color name="on_background_dark">#FFFFFF</color>
+
+    <!-- Surface Colors -->
+    <color name="surface_light">#F5F5F5</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="on_surface_light">#000000</color>
+    <color name="on_surface_dark">#FFFFFF</color>
+
+    <!-- Surface Variant -->
+    <color name="surface_variant_light">#E0E0E0</color>
+    <color name="surface_variant_dark">#2C2C2C</color>
+
+    <!-- Outline Colors -->
+    <color name="outline_light">#BDBDBD</color>
+    <color name="outline_dark">#757575</color>
+
+    <!-- Neutral Grays -->
+    <color name="gray_50">#FAFAFA</color>
+    <color name="gray_100">#F5F5F5</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_300">#E0E0E0</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="gray_500">#9E9E9E</color>
+    <color name="gray_600">#757575</color>
+    <color name="gray_700">#616161</color>
+    <color name="gray_800">#424242</color>
+    <color name="gray_900">#212121</color>
+
+    <!-- Transparent -->
+    <color name="transparent">#00000000</color>
+
+    <!-- Scrim (overlay) -->
+    <color name="scrim_light">#40000000</color>
+    <color name="scrim_dark">#80000000</color>
+
+    <!-- System Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+</resources>
