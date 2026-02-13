@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Empty State Icon - Vector Drawable
+
+    Friendly illustration for empty states.
+    Shows a folder with no content to indicate empty list.
+
+    Specifications:
+    - Size: 120dp x 120dp (large illustration)
+    - Format: Vector drawable
+    - Color: Low emphasis (onSurfaceVariant)
+    - Style: Material Design outlined
+
+    Use Cases:
+    - No students in database
+    - No search results
+    - No filtered items
+
+    @author Mary Tiluli
+    @version 1.0.0
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120"
+    android:tint="?attr/colorControlNormal"
+    android:alpha="0.6">
+
+    <!-- Empty folder outline -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M50,30 L50,25 C50,22.24 52.24,20 55,20 L75,20 L80,25 L100,25 C102.76,25 105,27.24 105,30 L105,85 C105,87.76 102.76,90 100,90 L20,90 C17.24,90 15,87.76 15,85 L15,35 C15,32.24 17.24,30 20,30 Z"
+        android:strokeWidth="4"
+        android:strokeColor="@android:color/white"
+        android:fillAlpha="0"/>
+
+    <!-- Horizontal lines inside folder (representing empty content) -->
+    <path
+        android:strokeWidth="3"
+        android:strokeColor="@android:color/white"
+        android:pathData="M35,50 L85,50"
+        android:strokeLineCap="round"/>
+
+    <path
+        android:strokeWidth="3"
+        android:strokeColor="@android:color/white"
+        android:pathData="M35,60 L70,60"
+        android:strokeLineCap="round"/>
+
+    <path
+        android:strokeWidth="3"
+        android:strokeColor="@android:color/white"
+        android:pathData="M35,70 L75,70"
+        android:strokeLineCap="round"/>
+</vector>
