@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Dark Theme Configuration
+
+    Defines dark mode theme for the application.
+    Applied automatically when system is in dark mode.
+
+    Configuration:
+    - Transparent system bars for edge-to-edge
+    - Dark status and navigation bars
+    - Light icons on dark background
+
+    @author Mary Tiluli
+    @version 1.0.0
+-->
+<resources>
+    <style name="Theme.StudentCrudApp" parent="android:Theme.Material.NoActionBar">
+        <!-- Enable Material You dynamic colors on Android 12+ -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!-- Dark status bar with light icons -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+
+        <!-- Background color for window -->
+        <item name="android:colorBackground">@color/background_dark</item>
+    </style>
+</resources>
