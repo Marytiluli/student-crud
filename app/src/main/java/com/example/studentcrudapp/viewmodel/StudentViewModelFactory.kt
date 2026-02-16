@@ -5,38 +5,29 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.studentcrudapp.data.repository.StudentRepository
 
 /**
- * StudentViewModelFactory - Factory for creating StudentViewModel
+ * StudentViewModelFactory - Factory for Creating StudentViewModel
  *
- * Custom ViewModelProvider.Factory that enables dependency injection
- * for ViewModels. Required because ViewModels need constructor parameters
- * (repository) that can't be provided by the default factory.
+ * Implements ViewModelProvider.Factory to create ViewModel instances
+ * with constructor parameters (dependency injection).
  *
- * Usage in Composable:
+ * Why Factory Pattern?
+ * - ViewModels cannot have constructor parameters by default
+ * - Factory allows passing dependencies (repository)
+ * - Type-safe ViewModel creation
+ * - Survives configuration changes
+ *
+ * Usage:
  * ```
- * val context = LocalContext.current
- * val database = AppDatabase.getDatabase(context)
- * val repository = StudentRepository(database.studentDao())
  * val viewModel: StudentViewModel = viewModel(
  *     factory = StudentViewModelFactory(repository)
  * )
  * ```
  *
- * Benefits:
- * - Decouples ViewModel creation from UI
- * - Enables testability (can inject mock repository)
- * - Follows SOLID principles (Dependency Injection)
- * - Type-safe ViewModel creation
- *
- * Alternative Approaches (Future):
- * - Hilt/Dagger for automatic DI
- * - Koin for lightweight DI
- * - Manual DI container
- *
  * @property repository StudentRepository instance to inject
  *
  * @author Mary Tiluli
  * @version 1.0.0
- * @since 2026-01-31
+ * @since 2026-02-05
  */
 class StudentViewModelFactory(
     private val repository: StudentRepository
@@ -45,13 +36,9 @@ class StudentViewModelFactory(
     /**
      * Creates a new instance of the given ViewModel class.
      *
-     * This method is called by the ViewModelProvider when requesting a ViewModel.
-     * It checks if the requested class is StudentViewModel and creates it with
-     * the injected repository.
-     *
-     * @param modelClass Class of the ViewModel to create
-     * @return New ViewModel instance
-     * @throws IllegalArgumentException if unknown ViewModel class
+     * @param modelClass Class of ViewModel to create
+     * @return New ViewModel instance with injected dependencies
+     * @throws IllegalArgumentException if ViewModel class is unknown
      */
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
