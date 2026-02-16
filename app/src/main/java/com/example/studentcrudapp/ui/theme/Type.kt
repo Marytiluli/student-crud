@@ -7,54 +7,55 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 /**
- * Typography System for Material Design 3
+ * Typography - Material Design 3 Text Styles
  *
- * Defines the complete type scale following Material Design 3 guidelines.
- * Uses default system fonts for maximum compatibility and performance.
+ * Defines the typography scale for the application.
+ * Based on Material Design 3 type system.
  *
- * Type Scale (13 styles):
- * - Display: Extra large text (hero sections)
- * - Headline: Large text (titles, headers)
- * - Title: Medium text (section titles)
- * - Body: Regular text (content, paragraphs)
- * - Label: Small text (buttons, labels)
+ * Type Scale:
+ * - Display: Large, impactful text (titles, headlines)
+ * - Headline: High-emphasis text (section headers)
+ * - Title: Medium-emphasis text (list items, card titles)
+ * - Body: Base text for reading (paragraphs, descriptions)
+ * - Label: Small text (buttons, tabs, captions)
  *
- * Font Weights:
- * - Normal: 400 (regular text)
- * - Medium: 500 (slightly emphasized)
- * - Bold: 700 (headings, emphasis)
- *
- * Line Heights:
- * - Designed for optimal readability
- * - Based on Material Design recommendations
- * - Ensures proper vertical rhythm
- *
- * Accessibility:
- * - Minimum font size: 12sp (label small)
- * - Clear hierarchy for screen readers
- * - Proper contrast with background
+ * Font Hierarchy:
+ * - Display Large: 57sp
+ * - Display Medium: 45sp
+ * - Display Small: 36sp
+ * - Headline Large: 32sp
+ * - Headline Medium: 28sp
+ * - Headline Small: 24sp
+ * - Title Large: 22sp
+ * - Title Medium: 16sp
+ * - Title Small: 14sp
+ * - Body Large: 16sp
+ * - Body Medium: 14sp
+ * - Body Small: 12sp
+ * - Label Large: 14sp
+ * - Label Medium: 12sp
+ * - Label Small: 11sp
  *
  * Usage:
  * ```
  * Text(
- *     text = "Hello World",
- *     style = MaterialTheme.typography.headlineMedium
+ *     text = "Student Manager",
+ *     style = MaterialTheme.typography.headlineLarge
  * )
  * ```
  *
  * @author Mary Tiluli
  * @version 1.0.0
- * @since 2026-01-31
+ * @since 2026-02-05
  */
 val Typography = Typography(
     // ===========================
-    // DISPLAY (Extra Large Text)
+    // DISPLAY STYLES
     // ===========================
 
     /**
-     * Display Large - Largest text style.
-     * Use for hero sections or splash screens.
-     * 57sp / 64sp line height
+     * Display Large - 57sp
+     * Use for: Hero text, main app title
      */
     displayLarge = TextStyle(
         fontFamily = FontFamily.Default,
@@ -65,8 +66,8 @@ val Typography = Typography(
     ),
 
     /**
-     * Display Medium.
-     * 45sp / 52sp line height
+     * Display Medium - 45sp
+     * Use for: Large section headers
      */
     displayMedium = TextStyle(
         fontFamily = FontFamily.Default,
@@ -77,8 +78,8 @@ val Typography = Typography(
     ),
 
     /**
-     * Display Small.
-     * 36sp / 44sp line height
+     * Display Small - 36sp
+     * Use for: Prominent headers
      */
     displaySmall = TextStyle(
         fontFamily = FontFamily.Default,
@@ -89,81 +90,76 @@ val Typography = Typography(
     ),
 
     // ===========================
-    // HEADLINE (Large Text)
+    // HEADLINE STYLES
     // ===========================
 
     /**
-     * Headline Large.
-     * Use for main screen titles.
-     * 32sp / 40sp line height
+     * Headline Large - 32sp
+     * Use for: Main screen titles
      */
     headlineLarge = TextStyle(
         fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Bold,
         fontSize = 32.sp,
         lineHeight = 40.sp,
         letterSpacing = 0.sp
     ),
 
     /**
-     * Headline Medium.
-     * Common for screen titles and card headers.
-     * 28sp / 36sp line height
+     * Headline Medium - 28sp
+     * Use for: Section headers
      */
     headlineMedium = TextStyle(
         fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 28.sp,
         lineHeight = 36.sp,
         letterSpacing = 0.sp
     ),
 
     /**
-     * Headline Small.
-     * 24sp / 32sp line height
+     * Headline Small - 24sp
+     * Use for: Subsection headers, dialog titles
      */
     headlineSmall = TextStyle(
         fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 24.sp,
         lineHeight = 32.sp,
         letterSpacing = 0.sp
     ),
 
     // ===========================
-    // TITLE (Medium Text)
+    // TITLE STYLES
     // ===========================
 
     /**
-     * Title Large.
-     * Use for dialog titles and section headers.
-     * 22sp / 28sp line height
+     * Title Large - 22sp
+     * Use for: Large emphasis text
      */
     titleLarge = TextStyle(
         fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
+        fontWeight = FontWeight.Bold,
         fontSize = 22.sp,
         lineHeight = 28.sp,
         letterSpacing = 0.sp
     ),
 
     /**
-     * Title Medium.
-     * Common for list item titles.
-     * 16sp / 24sp line height
+     * Title Medium - 16sp
+     * Use for: Card titles, list item primary text
      */
     titleMedium = TextStyle(
         fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
+        fontWeight = FontWeight.Bold,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.15.sp
     ),
 
     /**
-     * Title Small.
-     * Use for subtitles and secondary titles.
-     * 14sp / 20sp line height
+     * Title Small - 14sp
+     * Use for: Small titles, emphasized labels
      */
     titleSmall = TextStyle(
         fontFamily = FontFamily.Default,
@@ -174,13 +170,12 @@ val Typography = Typography(
     ),
 
     // ===========================
-    // BODY (Regular Text)
+    // BODY STYLES
     // ===========================
 
     /**
-     * Body Large.
-     * Main body text for important content.
-     * 16sp / 24sp line height
+     * Body Large - 16sp
+     * Use for: Long-form reading, primary descriptions
      */
     bodyLarge = TextStyle(
         fontFamily = FontFamily.Default,
@@ -191,9 +186,8 @@ val Typography = Typography(
     ),
 
     /**
-     * Body Medium.
-     * Standard body text for most content.
-     * 14sp / 20sp line height
+     * Body Medium - 14sp
+     * Use for: Body text, descriptions, list item secondary text
      */
     bodyMedium = TextStyle(
         fontFamily = FontFamily.Default,
@@ -204,9 +198,8 @@ val Typography = Typography(
     ),
 
     /**
-     * Body Small.
-     * Smaller body text for less important content.
-     * 12sp / 16sp line height
+     * Body Small - 12sp
+     * Use for: Fine print, captions
      */
     bodySmall = TextStyle(
         fontFamily = FontFamily.Default,
@@ -217,13 +210,12 @@ val Typography = Typography(
     ),
 
     // ===========================
-    // LABEL (Small Text)
+    // LABEL STYLES
     // ===========================
 
     /**
-     * Label Large.
-     * Use for button text and prominent labels.
-     * 14sp / 20sp line height
+     * Label Large - 14sp
+     * Use for: Button text, tab labels
      */
     labelLarge = TextStyle(
         fontFamily = FontFamily.Default,
@@ -234,9 +226,8 @@ val Typography = Typography(
     ),
 
     /**
-     * Label Medium.
-     * Standard label text.
-     * 12sp / 16sp line height
+     * Label Medium - 12sp
+     * Use for: Small button text, chip labels
      */
     labelMedium = TextStyle(
         fontFamily = FontFamily.Default,
@@ -247,9 +238,8 @@ val Typography = Typography(
     ),
 
     /**
-     * Label Small.
-     * Smallest text for captions and overlines.
-     * 11sp / 16sp line height
+     * Label Small - 11sp
+     * Use for: Overline text, timestamps
      */
     labelSmall = TextStyle(
         fontFamily = FontFamily.Default,
