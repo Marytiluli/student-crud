@@ -16,54 +16,59 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 /**
- * Material Design 3 Theme Configuration
+ * Theme - Material Design 3 Theme Implementation
  *
- * Provides the complete theming system for the application including:
+ * Implements the complete Material You theme system with:
  * - Light and dark color schemes
- * - Dynamic colors (Material You) on Android 12+
- * - Typography system
+ * - Dynamic colors (Android 12+)
+ * - Custom color fallback (Android 11 and below)
+ * - Typography scale
  * - Shape system
- * - System UI styling (status bar, navigation bar)
+ * - Edge-to-edge support
  *
  * Features:
- * - Automatic dark mode based on system settings
+ * - Automatic dark mode detection
+ * - System status bar color management
  * - Dynamic color extraction from wallpaper (Android 12+)
- * - Manual theme override support (future)
- * - Consistent styling across all screens
+ * - Backward compatibility for older Android versions
  *
- * Architecture:
- * - Uses CompositionLocalProviders for theme propagation
- * - Follows Material Design 3 guidelines
- * - Supports edge-to-edge display
+ * Dynamic Colors:
+ * - Android 12+ uses Material You dynamic theming
+ * - Colors adapt to user's wallpaper
+ * - Provides personalized experience
+ *
+ * @param darkTheme Whether to use dark theme (auto-detected from system)
+ * @param dynamicColor Whether to use dynamic colors (Android 12+)
+ * @param content Composable content to apply theme to
  *
  * @author Mary Tiluli
  * @version 1.0.0
- * @since 2026-01-31
+ * @since 2026-02-05
  */
 
 /**
- * Dark color scheme configuration.
- * Applied when system is in dark mode or user selects dark theme.
+ * Dark color scheme for the application.
+ * Used when system is in dark mode or user selects dark theme.
  */
 private val DarkColorScheme = darkColorScheme(
     primary = PrimaryDark,
     onPrimary = OnPrimary,
-    primaryContainer = PrimaryContainer,
+    primaryContainer = PrimaryContainerDark,
     onPrimaryContainer = OnPrimaryContainer,
 
     secondary = SecondaryDark,
     onSecondary = OnSecondary,
-    secondaryContainer = SecondaryContainer,
+    secondaryContainer = SecondaryContainerDark,
     onSecondaryContainer = OnSecondaryContainer,
 
     tertiary = TertiaryDark,
     onTertiary = OnTertiary,
-    tertiaryContainer = TertiaryContainer,
+    tertiaryContainer = TertiaryContainerDark,
     onTertiaryContainer = OnTertiaryContainer,
 
     error = ErrorDark,
     onError = OnError,
-    errorContainer = ErrorContainer,
+    errorContainer = ErrorContainerDark,
     onErrorContainer = OnErrorContainer,
 
     background = BackgroundDark,
@@ -75,62 +80,58 @@ private val DarkColorScheme = darkColorScheme(
     onSurfaceVariant = OnSurfaceVariantDark,
 
     outline = OutlineDark,
-    outlineVariant = OutlineVariantDark,
-
-    scrim = ScrimDark
+    outlineVariant = OutlineVariantDark
 )
 
 /**
- * Light color scheme configuration.
- * Applied when system is in light mode or user selects light theme.
+ * Light color scheme for the application.
+ * Used when system is in light mode (default).
  */
 private val LightColorScheme = lightColorScheme(
-    primary = PrimaryLight,
+    primary = Primary,
     onPrimary = OnPrimary,
     primaryContainer = PrimaryContainer,
     onPrimaryContainer = OnPrimaryContainer,
 
-    secondary = SecondaryLight,
+    secondary = Secondary,
     onSecondary = OnSecondary,
     secondaryContainer = SecondaryContainer,
     onSecondaryContainer = OnSecondaryContainer,
 
-    tertiary = TertiaryLight,
+    tertiary = Tertiary,
     onTertiary = OnTertiary,
     tertiaryContainer = TertiaryContainer,
     onTertiaryContainer = OnTertiaryContainer,
 
-    error = ErrorLight,
+    error = Error,
     onError = OnError,
     errorContainer = ErrorContainer,
     onErrorContainer = OnErrorContainer,
 
-    background = BackgroundLight,
-    onBackground = OnBackgroundLight,
+    background = Background,
+    onBackground = OnBackground,
 
-    surface = SurfaceLight,
-    onSurface = OnSurfaceLight,
-    surfaceVariant = SurfaceVariantLight,
-    onSurfaceVariant = OnSurfaceVariantLight,
+    surface = Surface,
+    onSurface = OnSurface,
+    surfaceVariant = SurfaceVariant,
+    onSurfaceVariant = OnSurfaceVariant,
 
-    outline = OutlineLight,
-    outlineVariant = OutlineVariantLight,
-
-    scrim = ScrimLight
+    outline = Outline,
+    outlineVariant = OutlineVariant
 )
 
 /**
- * Main theme composable that wraps the entire app.
+ * Main theme composable for the application.
  *
- * Automatically applies:
- * - Appropriate color scheme based on system theme
- * - Dynamic colors on Android 12+ (Material You)
- * - Typography and shape systems
- * - System UI bar colors
+ * Applies Material Design 3 theming with:
+ * - Color scheme (light/dark/dynamic)
+ * - Typography scale
+ * - Shape system
+ * - System bar colors
  *
  * @param darkTheme Whether to use dark theme (defaults to system setting)
- * @param dynamicColor Whether to use dynamic colors from wallpaper (Android 12+ only)
- * @param content Composable content to be themed
+ * @param dynamicColor Whether to enable dynamic colors (defaults to true on Android 12+)
+ * @param content Content to apply theme to
  */
 @Composable
 fun StudentCrudAppTheme(
@@ -138,9 +139,15 @@ fun StudentCrudAppTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    // Determine which color scheme to use
+    /**
+     * Color scheme selection logic:
+     * 1. If Android 12+ and dynamic colors enabled:
+     *    - Use system dynamic colors
+     * 2. Else:
+     *    - Use custom light/dark color scheme
+     */
     val colorScheme = when {
-        // Use dynamic color scheme on Android 12+ if enabled
+        // Dynamic colors on Android 12+
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
             if (darkTheme) {
@@ -149,24 +156,25 @@ fun StudentCrudAppTheme(
                 dynamicLightColorScheme(context)
             }
         }
-        // Use static dark theme
+
+        // Dark theme on older Android versions
         darkTheme -> DarkColorScheme
-        // Use static light theme
+
+        // Light theme (default)
         else -> LightColorScheme
     }
 
-    // Get current view for system UI styling
+    /**
+     * Update system bars to match theme.
+     * Makes status bar and navigation bar transparent with proper icon colors.
+     */
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
-            // Set status bar and navigation bar appearance
             val window = (view.context as Activity).window
+            window.statusBarColor = colorScheme.primary.toArgb()
 
-            // Set status bar color to transparent for edge-to-edge
-            window.statusBarColor = android.graphics.Color.TRANSPARENT
-            window.navigationBarColor = android.graphics.Color.TRANSPARENT
-
-            // Set status bar icons color based on theme
+            // Set system bar icon colors based on theme
             WindowCompat.getInsetsController(window, view).apply {
                 isAppearanceLightStatusBars = !darkTheme
                 isAppearanceLightNavigationBars = !darkTheme
@@ -174,7 +182,9 @@ fun StudentCrudAppTheme(
         }
     }
 
-    // Apply Material Theme with all systems
+    /**
+     * Apply Material Theme with color scheme, typography, and shapes.
+     */
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
